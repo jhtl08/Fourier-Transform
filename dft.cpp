@@ -136,7 +136,7 @@ int SignalImport(string fileName, double **xData)
 
   // successful import feedback
   cout << "Signal with start index 0, duration " << duration
-       << ", imported from " << fileName << endl;
+       << ", imported from " << fileName << "\n" << endl;
 
   isignalFile.close();
   return duration;
@@ -197,6 +197,9 @@ void DFTExport(string fileName, double startFreq, double endFreq,
       i++;
     }
   }
+
+  cout << "\nOutput Signal exported to "
+      << fileName << endl;
 }
 
 void computeDFT(double *xData, int xDuration,
