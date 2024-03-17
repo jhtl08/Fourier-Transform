@@ -1,10 +1,10 @@
 // dft.h
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 4, 2024
+// March 18, 2024
 
-#ifndef NORMCCHEADERDEF
-#define NORMCCHEADERDEF
+#ifndef DFTHEADERDEF
+#define DFTHEADERDEF
 
 #include <iostream>
 

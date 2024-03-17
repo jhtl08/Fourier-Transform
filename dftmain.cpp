@@ -1,7 +1,7 @@
 // dftmain.cpp
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 4, 2024
+// March 18, 2024
 
 #include "dft.h"
 

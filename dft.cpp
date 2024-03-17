@@ -1,7 +1,7 @@
 // dft.cpp
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 4, 2024
+// March 18, 2024
 
 #include "dft.h"
 #include <sstream>
@@ -136,7 +136,8 @@ int SignalImport(string fileName, double **xData)
 
   // successful import feedback
   cout << "Signal with start index 0, duration " << duration
-       << ", imported from " << fileName << "\n" << endl;
+       << ", imported from " << fileName << "\n"
+       << endl;
 
   isignalFile.close();
   return duration;
@@ -199,7 +200,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
   }
 
   cout << "\nOutput Signal exported to "
-      << fileName << endl;
+       << fileName << endl;
 }
 
 void computeDFT(double *xData, int xDuration,
