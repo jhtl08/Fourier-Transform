@@ -1,7 +1,7 @@
 // dft.cpp
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 18, 2024
+// March 28, 2024
 
 #include "dft.h"
 #include <sstream>
@@ -55,7 +55,7 @@ int SignalImport(string fileName, double **xData)
          << endl;
     return 0;
   }
-  // Clear the word to reuse it
+  // Clear word to reuse it
   word.clear();
 
   // Check if there is another double
@@ -81,7 +81,7 @@ int SignalImport(string fileName, double **xData)
     }
   }
 
-  // Clear the word to reuse it
+  // Clear word to reuse it
   word.clear();
 
   // Check valid values
@@ -157,20 +157,21 @@ void DFTExport(string fileName, double startFreq, double endFreq,
     return;
   }
 
-  outFile << "frequency\treal part\timaginary part\n";
+  // exporting to file
+  outFile << "frequency \t real part \t imaginary part\n";
   double freqInterval = (endFreq - startFreq) / nSteps;
   int i = 0;
   for (double w = startFreq; w <= endFreq; w += freqInterval)
   {
-    outFile << w << "  \t" << realPart[i] << "  \t" << imagPart[i]
+    outFile << w << " \t" << realPart[i] << " \t" << imagPart[i]
             << endl;
     i++;
   }
-  outFile << "\nfrequency\tmagnitude\tphase (degrees)\n";
+  outFile << "\nfrequency \tmagnitude \tphase(degrees)\n";
   i = 0;
   for (double w = startFreq; w <= endFreq; w += freqInterval)
   {
-    outFile << w << "  \t" << magnitude[i] << "  \t" << phase[i]
+    outFile << w << " \t" << magnitude[i] << " \t" << phase[i]
             << endl;
     i++;
   }
@@ -179,7 +180,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
   outFile.close();
 
   if (nSteps < 10)
-  {
+  { // exporting to command line
     cout << "frequency\treal part\timaginary part\n";
     double freqInterval = (endFreq - startFreq) / nSteps;
     int i = 0;
@@ -189,7 +190,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
            << endl;
       i++;
     }
-    cout << "\nfrequency\tmagnitude\tphase (degrees)\n";
+    cout << "\nfrequency\tmagnitude\tphase(degrees)\n";
     i = 0;
     for (double w = startFreq; w <= endFreq; w += freqInterval)
     {
@@ -199,6 +200,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
     }
   }
 
+  // export success feedback
   cout << "\nOutput Signal exported to "
        << fileName << endl;
 }
@@ -214,17 +216,23 @@ void computeDFT(double *xData, int xDuration,
   int i = 0;
   for (double w = startFreq; w <= endFreq; w += freqInterval)
   {
+    // set accumulator variables
     realPart[i] = 0.0;
     imagPart[i] = 0.0;
+    // convert each w to equivalent digital frequency
     digitalFreq = (2 * M_PI * w / samplingFreq);
     for (int n = 0; n < xDuration; n++)
     {
+      // calculate e's exponent for real and im components
       b_n = (-digitalFreq * n);
+      // accumulate sums for the components of each discrete w
       realPart[i] += xData[n] * cos(b_n);
       imagPart[i] += xData[n] * sin(b_n);
     }
+    // pythagorean of components to find magnitude
     magnitude[i] = sqrt(realPart[i] * realPart[i] +
                         imagPart[i] * imagPart[i]);
+    // arctan to find phase
     phase[i] = atan2(imagPart[i], realPart[i]) * 180 / M_PI;
     i++;
   }

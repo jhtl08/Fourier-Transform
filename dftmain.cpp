@@ -1,7 +1,7 @@
 // dftmain.cpp
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 18, 2024
+// March 28, 2024
 
 #include "dft.h"
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
   // initialize xData
   double *xData;
 
-  // get duration
+  // import data from input file and get its duration
   int xDuration = SignalImport(inputfileName, &xData);
 
   // check if data were imported from file name inputted
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  // initialize output arrays
+  // initialize output array containers
   double *realPart = new double[nSteps + 1];
   double *imagPart = new double[nSteps + 1];
   double *magnitude = new double[nSteps + 1];
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
   computeDFT(xData, xDuration, samplingFreq, startFreq, endFreq,
              nSteps, realPart, imagPart, magnitude, phase);
 
-  // output accordingly
+  // export accordingly
   DFTExport(outputfileName, startFreq, endFreq, nSteps, realPart,
             imagPart, magnitude, phase);
 

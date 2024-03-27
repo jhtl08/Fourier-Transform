@@ -1,7 +1,7 @@
 // dft.h
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 18, 2024
+// March 28, 2024
 
 #ifndef DFTHEADERDEF
 #define DFTHEADERDEF
