@@ -201,7 +201,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
   }
 
   // export success feedback
-  cout << "\nOutput Signal exported to "
+  cout << "\nDFT output exported to "
        << fileName << endl;
 }
 
