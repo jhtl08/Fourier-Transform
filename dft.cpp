@@ -1,7 +1,7 @@
 // dft.cpp
 // Kyle Coloma, Jason Lorenzo
 // ENGG 151.01-A
-// March 28, 2024
+// April 01, 2024
 
 #include "dft.h"
 #include <sstream>
@@ -158,7 +158,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
   }
 
   // exporting to file
-  outFile << "frequency \t real part \t imaginary part\n";
+  outFile << "frequency (Hz)\treal part \timaginary part\n";
   double freqInterval = (endFreq - startFreq) / nSteps;
   int i = 0;
   for (double w = startFreq; w <= endFreq; w += freqInterval)
@@ -167,7 +167,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
             << endl;
     i++;
   }
-  outFile << "\nfrequency \tmagnitude \tphase(degrees)\n";
+  outFile << "\nfrequency (Hz)\tmagnitude \tphase(degrees)\n";
   i = 0;
   for (double w = startFreq; w <= endFreq; w += freqInterval)
   {
@@ -181,7 +181,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
 
   if (nSteps < 10)
   { // exporting to command line
-    cout << "frequency\treal part\timaginary part\n";
+    cout << "frequency (Hz)\treal part\timaginary part\n";
     double freqInterval = (endFreq - startFreq) / nSteps;
     int i = 0;
     for (double w = startFreq; w <= endFreq; w += freqInterval)
@@ -190,7 +190,7 @@ void DFTExport(string fileName, double startFreq, double endFreq,
            << endl;
       i++;
     }
-    cout << "\nfrequency\tmagnitude\tphase(degrees)\n";
+    cout << "\nfrequency (Hz)\tmagnitude\tphase(degrees)\n";
     i = 0;
     for (double w = startFreq; w <= endFreq; w += freqInterval)
     {
